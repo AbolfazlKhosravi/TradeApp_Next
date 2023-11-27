@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const { fontFamily } = require("tailwindcss/defaultTheme");
+const {nextui} = require("@nextui-org/react");
 
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
@@ -17,6 +18,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/common/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -68,5 +70,5 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [nextui()],
 }
