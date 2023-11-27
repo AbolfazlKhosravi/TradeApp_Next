@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const { fontFamily } = require("tailwindcss/defaultTheme");
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
@@ -14,10 +14,10 @@ function withOpacity(variableName) {
 module.exports = {
   darkMode: "class",
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/common/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/common/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -46,7 +46,7 @@ module.exports = {
           200: withOpacity("--color-zincSecondary-200"),
           100: withOpacity("--color-zincSecondary-100"),
           50: withOpacity("--color-zincSecondary-50"),
-        }
+        },
       },
       fontFamily: {
         sans: ["var(--font-iranyekan)", ...fontFamily.sans],
@@ -55,20 +55,24 @@ module.exports = {
         center: true,
       },
       animation: {
-        'arrow-left': 'arrow-left 1.5s ease-out infinite',
-        'spin2' : ' spin 1.2s linear infinite'
+        "arrow-left": "arrow-left 1.5s ease-out infinite",
+        spin2: " spin 1.2s linear infinite",
       },
       keyframes: {
-        'arrow-left': {
-          '0%': { transform: 'translateX(15px)' },
-          '50%': { transform: 'translateX(-5px)' },
-          '100%': {  transform: 'translateX(15px)' },
+        "arrow-left": {
+          "0%": { transform: "translateX(15px)" },
+          "50%": { transform: "translateX(-5px)" },
+          "100%": { transform: "translateX(15px)" },
         },
       },
       boxShadow: {
         "input-focus": "0 12px 24px -8px var(--color-bluePrimary-300)",
-      }
+      },
     },
   },
-  plugins: [nextui()],
-}
+  plugins: [
+    nextui({
+      prefix: "myapp",
+    }),
+  ],
+};
