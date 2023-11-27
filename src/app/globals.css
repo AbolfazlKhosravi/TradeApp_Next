@@ -82,20 +82,18 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 17px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--nextui-default-50);
-}
+
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--nextui-default-300);
+  background: #888;
+  border-radius: 3px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--nextui-default-400);
+  background: #555;
 }
