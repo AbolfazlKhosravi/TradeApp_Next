@@ -2,21 +2,35 @@
 
 import { ThemeSwitcher } from "@/common/ThemeSwitcher/ThemeSwitcher";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import { Cart, Heart, IconeBrand, Meno, UserScan } from "@/common/icons/Icons";
 import userImg from "/public/user.jpg";
-
+import Drawer from "@/components/Header/Drawer ";
+import MenoDesktop from "@/components/Header/Meno";
+import iconeBrand from "/public/iconeBrand.svg"
 function Header() {
   const user = false;
   const [isShowDrawer, setIsShowDrawer] = useState(false);
+  useEffect(() => {
+    if (isShowDrawer) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isShowDrawer]);
   return (
-    <header className="w-full sticky top-0  z-10  backdrop-blur-xl p-3">
-      <div className="2xl:container  z-50 w-full h-full  flex-row-center-between relative">
-        <div className="flex-row-center-center h-full">
+    <header className="w-full sticky top-0  z-10  backdrop-blur-xl">
+      <div className=" 2xl:container  p-3 z-50 w-full h-full   flex-row-center-between relative lg:py-2 xl:py-1 xl:px-28 ">
+        <Drawer
+          isShowDrawer={isShowDrawer}
+          setIsShowDrawer={setIsShowDrawer}
+          user={user}
+        />
+        <div className="flex-row-center-center h-full w-auto">
           <button
-            className="text-default-600"
+            className="text-default-600 lg:hidden"
             onClick={() => setIsShowDrawer((v) => !v)}
           >
             <Meno height={35} width={35} />
@@ -26,26 +40,20 @@ function Header() {
             alt="Go to Home"
             className="cursor-pointer flex-row-center-center gap-x-3 mr-2"
           >
-            <IconeBrand width={40} height={40} />
-            <div className="flex flex-col items-start  gap-y-[1px] ">
-              <h1 className="hidden sm:flex text-xl xl:text-2xl text-primary-500  font-black ">
-                ترید هوم
-              </h1>
-              <p className="hidden sm:flex text-sm text-default-700">
-                سایت اموزش ترید
-              </p>
-            </div>
+            <Image  width={100} height={100} src={iconeBrand} alt="image icone" className="w-10 h-10 " />
+            <h1 className="hidden sm:flex text-xl lg:text-2xl text-primary-500  font-black ">
+              ترید هوم
+            </h1>
           </Link>
+          <div className="hidden lg:block lg:mr-8">
+            <MenoDesktop desktop />
+          </div>
         </div>
         <div className="gap-x-3 xl:gap-x-4 flex-row-center-between text-secondary-700 ">
-          {!user && (
-            <Link href="/auth">
-              <Button className="text-white bg-primary-500 font-medium">
-                <UserScan height={25} width={25} />
-                <p>ورود</p>
-              </Button>
-            </Link>
-          )}
+          <Link href="/cart">
+            <Cart height={30} width={30} />
+          </Link>
+          <ThemeSwitcher />
           {user && (
             <Link href="/profile" className="w-10 h-10 relative">
               <Image
@@ -56,13 +64,16 @@ function Header() {
               />
             </Link>
           )}
-          <Link href="/favorits" className="hidden sm:flex">
-            <Heart height={30} width={30} />{" "}
-          </Link>
-          <Link href="/cart">
-            <Cart height={30} width={30} />
-          </Link>
-          <ThemeSwitcher />
+          {!user && (
+            <Link href="/auth">
+              <button className="px-3 py-[.45rem] lg:py-[.35rem] rounded-lg text-white bg-primary-500 font-medium flex items-center justify-normal">
+                <span className="flex items-center justify-start gap-x-2">
+                  <UserScan height={25} width={25} />
+                  <p>ورود</p>
+                </span>
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </header>
