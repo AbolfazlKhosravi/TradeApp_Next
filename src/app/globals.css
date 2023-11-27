@@ -2,26 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --color-bluePrimary-900: #001731;
+    --color-bluePrimary-800: #002e62;
+    --color-bluePrimary-700: #004493;
+    --color-bluePrimary-600: #005bc4;
+    --color-bluePrimary-500: #006fee;
+    --color-bluePrimary-400: #338ef7;
+    --color-bluePrimary-300: #66aaf9;
+    --color-bluePrimary-200: #99c7fb;
+    --color-bluePrimary-100: #cce3fd;
+    --color-bluePrimary-50: #e6f1fe;
+    --color-zincSecondary-900: #18181b;
+    --color-zincSecondary-800: #27272a;
+    --color-zincSecondary-700: #3f3f46;
+    --color-zincSecondary-600: #52525b;
+    --color-zincSecondary-500: #71717a;
+    --color-zincSecondary-400: #a1a1aa;
+    --color-zincSecondary-300: #d4d4d8;
+    --color-zincSecondary-200: #e4e4e7;
+    --color-zincSecondary-100: #f4f4f5;
+    --color-zincSecondary-50: #fafafa;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .flex-row-center-between {
+    @apply flex flex-row items-center justify-between;
+  }
+  .flex-row-center-center {
+    @apply flex flex-row items-center justify-center;
+  }
+  .flex-col-center-center {
+    @apply flex flex-col items-center justify-center;
+  }
+  .textField__input {
+    @apply w-full py-3 px-4 rounded-xl bg-gray-100 text-secondary-900 border border-gray-100 outline-none duration-200 transition-all ease-in-out hover:border-primary-300 focus:outline-none focus:border-primary-300 focus:shadow-input-focus focus:bg-white;
+  }
+  .btn {
+    @apply px-2 py-1 font-bold rounded-2xl transition-all duration-300;
+  }
+  .btn--primary {
+    @apply px-4 py-3 bg-primary-900 text-white hover:bg-primary-800 shadow-lg shadow-primary-300;
+  }
+  .btn--secondary {
+    @apply px-4 py-3 bg-white text-secondary-400 border border-secondary-400 hover:bg-secondary-400 hover:text-white shadow-lg shadow-secondary-100;
+  }
+  .table__th {
+    @apply border-b-2 border-b-gray-500 font-medium p-3 pr-8 pb-3 text-right;
+  }
+  .table__td {
+    @apply border-b  border-b-gray-300 p-3 pr-8 pb-3 text-right;
+  }
+  .badge {
+    @apply whitespace-nowrap px-3 py-1 rounded-xl;
+  }
+  .badge--primary {
+    @apply bg-primary-900 text-white;
+  }
+  .badge--secondary {
+    @apply bg-secondary-600 text-white;
+  }
+  .badge--success {
+    @apply bg-green-600 text-white;
+  }
+  .badge--error {
+    @apply bg-rose-600 text-white;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-iranyekan);
+  min-height: 100vh;
+  user-select: none;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: var(--nextui-default-50);
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: var(--nextui-default-300);
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: var(--nextui-default-400);
+} */
