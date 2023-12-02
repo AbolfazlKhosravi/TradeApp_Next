@@ -44,7 +44,9 @@ function Drawer({ setIsShowDrawer, isShowDrawer, user }) {
         <div className="w-full flex flex-col items-start">
           <div className="flex-row-center-between w-full border-b-1 border-default-300 pt-6 px-8 pb-3">
             <Link href="/" className="flex items-center justify-between ">
-              <IconeBrand width={36} height={36} />
+            <span className="w-10 h-10 flex items-center justify-center bg-primary-500 rounded-lg ">
+              <IconeBrand width={31} height={31} />
+            </span>
               <div className="flex flex-col items-start  justify-center mx-3">
                 <h1 className=" text-xl text-primary-500 font-extrabold ">
                   {" "}

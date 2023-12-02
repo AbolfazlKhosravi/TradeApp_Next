@@ -22,7 +22,7 @@ function Header() {
   }, [isShowDrawer]);
   return (
     <header className="w-full sticky top-0  z-10  backdrop-blur-lg">
-      <div className=" 2xl:container  p-3 z-50 w-full h-full   flex-row-center-between relative  xl:px-28 lg:font-medium">
+      <div className=" 2xl:container  p-3 lg:p-2 z-50 w-full h-full   flex-row-center-between relative  xl:px-28 lg:font-medium">
         <Drawer
           isShowDrawer={isShowDrawer}
           setIsShowDrawer={setIsShowDrawer}
@@ -40,15 +40,17 @@ function Header() {
             alt="Go to Home"
             className="cursor-pointer flex-row-center-center mr-3 lg:mr-0"
           >
-            <Image
-              width={100}
-              height={100}
-              src={iconeBrand}
-              alt="image icone"
-              className="w-10 h-10 "
-            />
+            <span className="w-10 h-10 flex items-center justify-center bg-primary-500 rounded-lg ">
+              <Image
+                width={100}
+                height={100}
+                src={iconeBrand}
+                alt="image icone"
+                className="w-8 h-8 "
+              />
+            </span>
             <div className="flex flex-col items-start  justify-center mx-3">
-              <h1 className="hidden sm:flex text-2xl lg:text-2xl text-primary-500  font-black ">
+              <h1 className="hidden sm:flex text-2xl  text-primary-500  font-black ">
                 ترید هوم
               </h1>
               <p className="hidden sm:flex  text-[.7rem] text-bluePrimary-300 font-extralight">

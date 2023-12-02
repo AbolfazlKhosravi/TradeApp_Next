@@ -12,11 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html suppressHydrationWarning lang="en" dir="rtl">
-      <body className={`${iranyekanFont.variable} font-sans bg-foreground-50`}>
+      <body className={`${iranyekanFont.variable} font-sans bg-foreground-50 dark:bg-[#04080F]`}>
         <Providers>
           <main className="min-h-screen flex flex-col">
             <Header />
-            <div className="container w-full flex-1">{children}</div>
+            <div className="container w-full flex-1 xl:px-28 mt-8">{children}</div>
             <Footer />
           </main>
         </Providers>

@@ -34,7 +34,7 @@ export function ThemeSwitcher() {
   }, [theme]);
 
   return (
-    <div className="w-10 h-10 lg:w-8 lg:h-8 lg:bg-default-50 flex-row-center-center rounded-lg bg-default-100">
+    <div className="w-10 h-10  flex-row-center-center rounded-2xl bg-default-100">
       {!mounted ? (
         <span className="text-primary-500">
           <Loading width="30" heigh="30" color="text-primary-500" />
