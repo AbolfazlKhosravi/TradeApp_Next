@@ -33,7 +33,7 @@ function Meno({ desktop }) {
                   href={item.href}
                   className={`${
                     pathname === item.href && "text-primary-500"
-                  } flex items-center justify-start flex-row `}
+                  } ${desktop && pathname === item.href&&"border-b-2 border-primary-500 rounded-lg"} flex items-center justify-start flex-row `}
                 >
                   {!desktop && pathname === item.href && (
                     <span className="absolute right-0 text-primary-500">
@@ -53,13 +53,13 @@ function Meno({ desktop }) {
                 <div
                   className={`${
                     desktop ? "w-30 " : "w-full flex flex-col  "
-                  } py-3`}
+                  } ${desktop && pathname === item.href&&"border-b-2 border-primary-500 rounded-lg"} py-3`}
                 >
                   {" "}
                   <div
                     className={`${
                       pathname === item.href && "text-primary-500"
-                    } flex items-center justify-start w-full cursor-pointer z-20 hover:text-primary-500`}
+                    } flex items-center justify-start w-full h-full cursor-pointer z-20 hover:text-primary-500`}
                     onClick={() =>
                       setDropdown(dropdown === item.id ? "" : item.id)
                     }

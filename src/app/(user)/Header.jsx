@@ -9,7 +9,7 @@ import { Cart, Heart, IconeBrand, Meno, UserScan } from "@/common/icons/Icons";
 import userImg from "/public/user.jpg";
 import Drawer from "@/components/Header/Drawer ";
 import MenoDesktop from "@/components/Header/Meno";
-import iconeBrand from "/public/iconeBrand.svg"
+import iconeBrand from "/public/iconeBrand.svg";
 function Header() {
   const user = false;
   const [isShowDrawer, setIsShowDrawer] = useState(false);
@@ -21,8 +21,8 @@ function Header() {
     }
   }, [isShowDrawer]);
   return (
-    <header className="w-full sticky top-0  z-10  backdrop-blur-xl">
-      <div className=" 2xl:container  p-3 z-50 w-full h-full   flex-row-center-between relative lg:py-2 xl:py-1 xl:px-28 ">
+    <header className="w-full sticky top-0  z-10  backdrop-blur-lg">
+      <div className=" 2xl:container  p-3 z-50 w-full h-full   flex-row-center-between relative  xl:px-28 lg:font-medium">
         <Drawer
           isShowDrawer={isShowDrawer}
           setIsShowDrawer={setIsShowDrawer}
@@ -38,14 +38,25 @@ function Header() {
           <Link
             href="/"
             alt="Go to Home"
-            className="cursor-pointer flex-row-center-center gap-x-3 mr-2"
+            className="cursor-pointer flex-row-center-center mr-3 lg:mr-0"
           >
-            <Image  width={100} height={100} src={iconeBrand} alt="image icone" className="w-10 h-10 " />
-            <h1 className="hidden sm:flex text-xl lg:text-2xl text-primary-500  font-black ">
-              ترید هوم
-            </h1>
+            <Image
+              width={100}
+              height={100}
+              src={iconeBrand}
+              alt="image icone"
+              className="w-10 h-10 "
+            />
+            <div className="flex flex-col items-start  justify-center mx-3">
+              <h1 className="hidden sm:flex text-2xl lg:text-2xl text-primary-500  font-black ">
+                ترید هوم
+              </h1>
+              <p className="hidden sm:flex  text-[.7rem] text-bluePrimary-300 font-extralight">
+                سایت اموزش ترید
+              </p>
+            </div>
           </Link>
-          <div className="hidden lg:block lg:mr-8">
+          <div className="hidden lg:block lg:mr-12">
             <MenoDesktop desktop />
           </div>
         </div>
@@ -66,7 +77,7 @@ function Header() {
           )}
           {!user && (
             <Link href="/auth">
-              <button className="px-3 py-[.45rem] lg:py-[.35rem] rounded-lg text-white bg-primary-500 font-medium flex items-center justify-normal">
+              <button className="px-3 py-[.43rem] rounded-lg text-white bg-primary-500 font-medium flex items-center justify-normal">
                 <span className="flex items-center justify-start gap-x-2">
                   <UserScan height={25} width={25} />
                   <p>ورود</p>

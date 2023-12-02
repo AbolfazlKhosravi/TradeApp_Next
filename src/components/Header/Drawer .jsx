@@ -50,7 +50,7 @@ function Drawer({ setIsShowDrawer, isShowDrawer, user }) {
                   {" "}
                   ترید هوم
                 </h1>
-                <p className="  text-[.55rem] text-bluePrimary-300 font-extralight">
+                <p className="  text-[.6rem] text-bluePrimary-300 font-extralight">
                   سایت اموزش ترید
                 </p>
               </div>
