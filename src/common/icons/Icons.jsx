@@ -26,7 +26,7 @@ export const UserScan = ({ width, height }) => (
   </svg>
 );
 export const Cart = ({ width, height }) => (
-  <div className="text-primary-500 bg-default-100  w-10 h-10   flex-row-center-center rounded-2xl">
+  <div className="text-primary-500 w-10 h-10  flex-row-center-center">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}

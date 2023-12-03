@@ -32,14 +32,14 @@ function Drawer({ setIsShowDrawer, isShowDrawer, user }) {
       ref={removeDropShot}
       className={`${
         isShowDrawer ? "w-full" : "w-0"
-      } absolute   top-0 right-0   h-screen z-30 transition-all duration-200 overflow-hidden`}
+      } absolute   top-0 right-0   h-screen z-50 transition-all duration-200 overflow-hidden`}
     >
       <div
         onClick={() => setIsShowDrawer(false)}
         className={`absolute bg-zincSecondary-900 opacity-60 h-full w-full  -z-10  top-0 right-0`}
       ></div>
       <div
-        className={`flex flex-col items-start justify-between max-h-screen min-h-screen w-[17.5rem] sm:w-[20rem]  overflow-y-auto z-50 bg-foreground-100 pb-6`}
+        className={`flex flex-col items-start justify-between max-h-screen min-h-screen w-[17.5rem] sm:w-[20rem]  overflow-y-auto z-50 bg-foreground-100 dark:bgColor pb-6`}
       >
         <div className="w-full flex flex-col items-start">
           <div className="flex-row-center-between w-full border-b-1 border-default-300 pt-6 px-8 pb-3">

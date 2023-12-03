@@ -3,6 +3,7 @@ import "../globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Providers from "../Providers";
+import EllipseLeft from "@/common/EllipseLeft";
 
 export const metadata = {
   title: "ترید هوم",
@@ -12,11 +13,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html suppressHydrationWarning lang="en" dir="rtl">
-      <body className={`${iranyekanFont.variable} font-sans bg-foreground-50 dark:bg-[#04080F]`}>
+      <body
+        className={`${iranyekanFont.variable} -z-50  font-sans bg-foreground-50 dark:bg-[#04080F]`}
+      >
         <Providers>
-          <main className="min-h-screen flex flex-col">
+          <EllipseLeft />
+          <main className="min-h-screen flex flex-col z-0 ">
             <Header />
-            <div className="container w-full flex-1 xl:px-28 mt-8">{children}</div>
+            <div className="container w-full h-full flex-1 xl:px-28 my-5">
+              {children}
+            </div>
             <Footer />
           </main>
         </Providers>
