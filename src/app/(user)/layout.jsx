@@ -3,7 +3,6 @@ import "../globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Providers from "../Providers";
-import EllipseLeft from "@/common/EllipseLeft";
 
 export const metadata = {
   title: "ترید هوم",
@@ -17,10 +16,9 @@ export default function RootLayout({ children }) {
         className={`${iranyekanFont.variable} -z-50  font-sans bg-foreground-50 dark:bg-[#04080F]`}
       >
         <Providers>
-          <EllipseLeft />
           <main className="min-h-screen flex flex-col z-0 ">
             <Header />
-            <div className="container w-full h-full flex-1 xl:px-28 my-5">
+            <div className="container w-full h-full flex-1 xl:px-40 ">
               {children}
             </div>
             <Footer />

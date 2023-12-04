@@ -3,10 +3,10 @@ export const MoonIcon = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
-    height="30"
+    height="32"
     role="presentation"
     viewBox="0 0 24 24"
-    width="30"
+    width="32"
     {...props}
   >
     <path

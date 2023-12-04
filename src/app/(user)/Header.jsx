@@ -4,11 +4,20 @@ import { ThemeSwitcher } from "@/common/ThemeSwitcher/ThemeSwitcher";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Cart, Heart, IconeBrand, Meno, UserScan } from "@/common/icons/Icons";
+import {
+  Cart,
+  Heart,
+  IconeBrand,
+  Meno,
+  UserScan,
+  User,
+} from "@/common/icons/Icons";
 import userImg from "/public/user.jpg";
 import Drawer from "@/components/Header/Drawer ";
 import MenoDesktop from "@/components/Header/Meno";
 import iconeBrand from "/public/iconeBrand.svg";
+import { Button } from "@nextui-org/react";
+import { PiSignInBold } from "react-icons/pi";
 
 function Header() {
   const user = false;
@@ -28,28 +37,26 @@ function Header() {
           setIsShowDrawer={setIsShowDrawer}
           user={user}
         />
-        <div className=" backdrop-blur-md dark:backdrop-blur-none dark:bg-opacity-90 dark:bg-[#04080F]  p-3 lg:p-2 z-20 w-full h-full   flex-row-center-between relative  xl:px-28 lg:font-medium">
+        <div className=" backdrop-blur-md dark:backdrop-blur-none dark:bg-opacity-90 dark:bg-[#04080F]  p-3 md:py-2  lg:py-1 z-20 w-full h-full   flex-row-center-between relative  xl:px-28 md:font-medium">
           <div className="flex-row-center-center h-full w-auto">
             <button
               className="text-default-600 lg:hidden"
               onClick={() => setIsShowDrawer((v) => !v)}
             >
-              <Meno height={35} width={35} />
+              <Meno height={34} width={34} />
             </button>
             <Link
               href="/"
               alt="Go to Home"
               className="cursor-pointer flex-row-center-center mr-3 lg:mr-0"
             >
-              <span className="w-10 h-10 flex items-center justify-center bg-primary-500 rounded-lg ">
-                <Image
-                  width={100}
-                  height={100}
-                  src={iconeBrand}
-                  alt="image icone"
-                  className="w-8 h-8 "
-                />
-              </span>
+              <Image
+                width={100}
+                height={100}
+                src={iconeBrand}
+                alt="image icone"
+                className="w-9 h-9 "
+              />
               <div className="flex flex-col items-start  justify-center mx-3">
                 <h1 className="hidden sm:flex text-2xl  text-primary-500  font-black ">
                   ترید هوم
@@ -62,10 +69,13 @@ function Header() {
             <div className="hidden lg:block lg:mr-12">
               <MenoDesktop desktop />
             </div>
+            <div className="hidden md:block  lg:hidden md:mr-6">
+              <MenoDesktop taplet desktop />
+            </div>
           </div>
           <div className="gap-x-3 xl:gap-x-4 flex-row-center-between text-secondary-700 ">
-            <Link href="/cart">
-              <Cart height={30} width={30} />
+            <Link href="/cart" className="text-primary-500">
+              <Cart height={32} width={32} />
             </Link>
             <ThemeSwitcher />
             {user && (
@@ -80,12 +90,16 @@ function Header() {
             )}
             {!user && (
               <Link href="/auth">
-                <button className="px-3 py-[.43rem] rounded-lg text-white bg-primary-500 font-medium flex items-center justify-normal">
-                  <span className="flex items-center justify-start gap-x-2">
-                    <UserScan height={25} width={25} />
-                    <p>ورود</p>
-                  </span>
-                </button>
+                <Button
+                  className="font-bold text-[1rem] "
+                  size="md"
+                  radius="lg"
+                  color="primary"
+                  variant="shadow"
+                  startContent={<PiSignInBold className="w-5 h-5 rotate-180" />}
+                >
+                  ورود
+                </Button>
               </Link>
             )}
           </div>

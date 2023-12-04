@@ -7,6 +7,7 @@ import { Close, IconeBrand, UserScan } from "@/common/icons/Icons";
 import { Button } from "@nextui-org/react";
 import userImg from "/public/user.jpg";
 import Image from "next/image";
+import { PiSignInBold } from "react-icons/pi";
 
 function Drawer({ setIsShowDrawer, isShowDrawer, user }) {
   const removeDropShot = useRef(null);
@@ -44,9 +45,7 @@ function Drawer({ setIsShowDrawer, isShowDrawer, user }) {
         <div className="w-full flex flex-col items-start">
           <div className="flex-row-center-between w-full border-b-1 border-default-300 pt-6 px-8 pb-3">
             <Link href="/" className="flex items-center justify-between ">
-            <span className="w-10 h-10 flex items-center justify-center bg-primary-500 rounded-lg ">
-              <IconeBrand width={31} height={31} />
-            </span>
+                <IconeBrand width={33} height={33} />
               <div className="flex flex-col items-start  justify-center mx-3">
                 <h1 className=" text-xl text-primary-500 font-extrabold ">
                   {" "}
@@ -67,10 +66,16 @@ function Drawer({ setIsShowDrawer, isShowDrawer, user }) {
           <Meno />
         </div>
         {!user && (
-          <Link href="/auth" className="w-full px-7 mt-7">
-            <Button className="flex items-center justify-center text-white bg-primary-500 font-medium w-full h-12 rounded-2xl text-lg shadow-sm shadow-primary-500">
-              <UserScan height={30} width={30} />
-              <p>ورود</p>
+          <Link href="/auth" className="w-full  px-7  mt-7">
+            <Button
+              className="font-bold text-[1rem] w-full "
+              size="lg"
+              radius="lg"
+              color="primary"
+              variant="shadow"
+              startContent={<PiSignInBold className="w-5 h-5 rotate-180" />}
+            >
+              ورود
             </Button>
           </Link>
         )}
