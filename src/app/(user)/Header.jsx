@@ -37,7 +37,7 @@ function Header() {
           setIsShowDrawer={setIsShowDrawer}
           user={user}
         />
-        <div className=" backdrop-blur-md dark:backdrop-blur-none dark:bg-opacity-90 dark:bg-[#04080F]  p-3 md:py-2  lg:py-1 z-20 w-full h-full   flex-row-center-between relative  xl:px-28 md:font-medium">
+        <div className=" backdrop-blur-md dark:backdrop-blur-none dark:bg-opacity-90 dark:bg-[#2D2E2F]  p-3 md:py-2  lg:py-1 z-20 w-full h-full   flex-row-center-between relative  xl:px-28 md:font-medium">
           <div className="flex-row-center-center h-full w-auto">
             <button
               className="text-default-600 lg:hidden"
