@@ -51,7 +51,7 @@ function Meno({ desktop, taplet }) {
                       <span className={`${desktop ? "hidden" : "pl-2"}`}>
                         {item.icone}
                       </span>
-                      <span className={`${desktop && item.href==="/" ? "hidden xl:block pl-2" : " hidden"}`}>
+                      <span className={`${desktop && item.href===pathname ? "hidden xl:block pl-2" : " hidden"}`}>
                         {item.icone}
                       </span>
                       <h2>{item.label}</h2>
@@ -64,7 +64,7 @@ function Meno({ desktop, taplet }) {
                     } ${
                       desktop &&
                       pathname === item.href &&
-                      "border-b-2 border-primary-500 rounded-lg"
+                      "font-bold"
                     } py-3`}
                   >
                     {" "}
@@ -85,6 +85,9 @@ function Meno({ desktop, taplet }) {
                         <span className={`${desktop ? "hidden" : "pl-2"}`}>
                           {item.icone}
                         </span>
+                        <span className={`${desktop && item.href===pathname ? "hidden xl:block pl-2" : " hidden"}`}>
+                        {item.icone}
+                      </span>
                         <h2>{item.label}</h2>
                       </div>
                       <span
@@ -136,7 +139,7 @@ function Meno({ desktop, taplet }) {
                   className={`${pathname === item.href && "text-primary-500"} ${
                     desktop &&
                     pathname === item.href &&
-                    "border-b-2 border-primary-500 "
+                    "font-bold "
                   } flex items-center justify-start flex-row `}
                 >
                   {!desktop && pathname === item.href && (
