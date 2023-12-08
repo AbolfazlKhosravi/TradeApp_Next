@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         className={`${iranyekanFont.variable} -z-50  font-sans bg-foreground-50 dark:bg-[#2D2E2F]`}
       >
         <Providers>
-          <main className="min-h-screen w-full container flex flex-col">
+          <main className="min-h-screen w-full container flex flex-col xl:px-40">
             {children}
           </main>
         </Providers>

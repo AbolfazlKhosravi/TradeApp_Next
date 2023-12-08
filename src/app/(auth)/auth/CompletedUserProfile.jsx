@@ -23,9 +23,9 @@ function CompletedUserProfile({
       {" "}
       <form
         onSubmit={senProfileHandler}
-        className="w-full flex flex-col gap-y-6 px-4 "
+        className="w-full flex flex-col md:flex-row md:px-0 gap-y-6 px-4 md:gap-x-8 "
       >
-        <div className="relative flex justify-center items-center bg-default-100 dark:bgColor  p-3  rounded-3xl  w-full  ">
+        <div className="md:order-last relative flex justify-center items-center bg-default-100 dark:bgColor  p-3 md:p-4  rounded-3xl  w-full  ">
           {avatar && (
             <label
               className="z-50 absolute bottom-[.6rem] translate-x-8 p-1 border cursor-pointer border-primary-700 rounded-2xl flex whitespace-nowrap items-center justify-center text-primary-500"
@@ -74,52 +74,54 @@ function CompletedUserProfile({
             </label>
           )}
         </div>
-        <div className="flex flex-col  gap-y-6 w-full">
-          <Input
-            label="نام و نام خانوادگی"
-            name="name"
-            value={profileUser.name}
-            onChange={profileUserHandler}
-            dir="rtl"
-            variant={"bordered"}
-            className={`h-12 w-full `}
-            isRequired
-          />
-          <Input
-            label="ایمیل"
-            name="email"
-            value={profileUser.email}
-            onChange={profileUserHandler}
-            dir="ltr"
-            type="email"
-            variant={"bordered"}
-            className={`h-12 w-full `}
-          />
-        </div>
-        <div className="grid grid-cols-3 gap-x-4 ">
-          {isPendingSendProfile ? (
-            <span className=" shadow-lg shadow-bluePrimary-500 rounded-xl flex items-center justify-center w-full col-span-2 h-12  font-bold text-[1rem]  bg-bluePrimary-500 text-white">
-              <LoadingButton width="43" heigh="43" />
-            </span>
-          ) : (
+        <div className="w-full flex flex-col md:items-center gap-y-6  ">
+          <div className="flex flex-col  gap-y-6 w-full ">
+            <Input
+              label="نام و نام خانوادگی"
+              name="name"
+              value={profileUser.name}
+              onChange={profileUserHandler}
+              dir="rtl"
+              variant={"bordered"}
+              className={`h-12 w-full `}
+              isRequired
+            />
+            <Input
+              label="ایمیل"
+              name="email"
+              value={profileUser.email}
+              onChange={profileUserHandler}
+              dir="ltr"
+              type="email"
+              variant={"bordered"}
+              className={`h-12 w-full `}
+            />
+          </div>
+          <div className="grid grid-cols-3 gap-x-4 ">
+            {isPendingSendProfile ? (
+              <span className=" shadow-lg shadow-bluePrimary-500 rounded-xl flex items-center justify-center w-full col-span-2 h-12  font-bold text-[1rem]  bg-bluePrimary-500 text-white">
+                <LoadingButton width="43" heigh="43" />
+              </span>
+            ) : (
+              <Button
+                type="submit"
+                variant="shadow"
+                className="w-full h-12 font-bold text-[1rem] col-span-2"
+                color="primary"
+              >
+                تکمیل اطلاعات
+              </Button>
+            )}
             <Button
-              type="submit"
+              type="button"
+              onClick={() => router.push("/")}
               variant="shadow"
-              className="w-full h-12 font-bold text-[1rem] col-span-2"
-              color="primary"
+              className="w-full h-12 dark:bgColor font-bold text-[1rem] col-span-1 text-default-600"
+              color="default"
             >
-              تکمیل اطلاعات
+              بعدا
             </Button>
-          )}
-          <Button
-            type="button"
-            onClick={() => router.push("/")}
-            variant="shadow"
-            className="w-full h-12 dark:bgColor font-bold text-[1rem] col-span-1 text-default-600"
-            color="default"
-          >
-            بعدا
-          </Button>
+          </div>
         </div>
       </form>
     </>
