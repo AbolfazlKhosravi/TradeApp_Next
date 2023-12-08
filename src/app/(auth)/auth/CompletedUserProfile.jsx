@@ -7,6 +7,7 @@ import { PiUserCircleThin, PiUserCirclePlusLight } from "react-icons/pi";
 import { Button, Input } from "@nextui-org/react";
 import { FaUserCircle } from "react-icons/fa";
 import { Camera } from "@/common/icons/Icons";
+import LoadingButton from "@/common/LoadingButton";
 
 function CompletedUserProfile({
   avatar,
@@ -27,7 +28,7 @@ function CompletedUserProfile({
         <div className="relative flex justify-center items-center bg-default-100 dark:bgColor  p-3  rounded-3xl  w-full  ">
           {avatar && (
             <label
-              className="z-50 absolute bottom-[.3rem] translate-x-7 p-1 border cursor-pointer border-default-700 rounded-2xl flex whitespace-nowrap items-center justify-center text-primary-500"
+              className="z-50 absolute bottom-[.6rem] translate-x-8 p-1 border cursor-pointer border-primary-700 rounded-2xl flex whitespace-nowrap items-center justify-center text-primary-500"
               htmlFor="avatar"
             >
               <Camera width={25} height={25} />
@@ -61,9 +62,15 @@ function CompletedUserProfile({
           ) : (
             <label
               htmlFor="avatar"
-              className="border border-default-300 w-20 h-20 backdrop-blur-lg rounded-full flex items-center justify-center text-primary-500"
+              className=" relative border text-4xl border-default-300 w-20 h-20 backdrop-blur-lg rounded-full flex items-center justify-center text-primary-500"
             >
-              <Camera width={50} height={50} />
+              <p className=" translate-y-1">؟</p>
+              <label
+                className="z-50 absolute bottom-0  translate-x-8 p-1 border cursor-pointer border-default-300 rounded-2xl flex whitespace-nowrap items-center justify-center text-primary-500"
+                htmlFor="avatar"
+              >
+                <Camera width={25} height={25} />
+              </label>
             </label>
           )}
         </div>
@@ -83,6 +90,7 @@ function CompletedUserProfile({
             name="email"
             value={profileUser.email}
             onChange={profileUserHandler}
+            dir="ltr"
             type="email"
             variant={"bordered"}
             className={`h-12 w-full `}
@@ -90,9 +98,9 @@ function CompletedUserProfile({
         </div>
         <div className="grid grid-cols-3 gap-x-4 ">
           {isPendingSendProfile ? (
-            <p className="btn btn--primary w-full  col-span-2  text-center">
-              loading
-            </p>
+            <span className=" shadow-lg shadow-bluePrimary-500 rounded-xl flex items-center justify-center w-full col-span-2 h-12  font-bold text-[1rem]  bg-bluePrimary-500 text-white">
+              <LoadingButton width="43" heigh="43" />
+            </span>
           ) : (
             <Button
               type="submit"
@@ -104,9 +112,10 @@ function CompletedUserProfile({
             </Button>
           )}
           <Button
-            type="submit"
+            type="button"
+            onClick={() => router.push("/")}
             variant="shadow"
-            className="w-full h-12 font-bold text-[1rem] col-span-1"
+            className="w-full h-12 dark:bgColor font-bold text-[1rem] col-span-1 text-default-600"
             color="default"
           >
             بعدا

@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { MoonIcon } from "./MoonIcon";
 import { SunIcon } from "./SunIcon";
-import Loading from "../Loading";
+import Loading from "../LoadingButton";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);

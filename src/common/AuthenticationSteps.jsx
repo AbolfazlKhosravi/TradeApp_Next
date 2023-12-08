@@ -8,12 +8,12 @@ function AuthenticationSteps({authenticationSteps,step}) {
           <React.Fragment key={value.id}>
             <div
               key={value.id}
-              className=" relative px-2 w-auto flex flex-col items-center "
+              className=" relative px-2 w-auto flex flex-col items-center  "
             >
               <span
                 className={`${
                   step >= value.count ? "bg-primary-500 " : " bg-default-300 "
-                } text-white  w-8 h-8   text-sm text-center flex items-center justify-center  rounded-full `}
+                } text-white  w-8 h-8 font-medium   text-sm text-center flex items-center justify-center  rounded-full `}
               >
                 {value.count.toLocaleString("fa")}
               </span>
@@ -22,7 +22,7 @@ function AuthenticationSteps({authenticationSteps,step}) {
                   step >= value.count
                     ? "text-primary-500"
                     : "text-default-400 "
-                } text-[.6rem]`}
+                } text-[.6rem] font-medium`}
               >
                 {value.label}
               </p>

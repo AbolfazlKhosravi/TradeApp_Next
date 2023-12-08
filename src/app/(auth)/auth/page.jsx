@@ -8,6 +8,10 @@ import SendOTPForm from "./SendOTPForm";
 import CheckOTPForm from "./CheckOTPForm";
 import { Back } from "@/common/icons/Icons";
 import CompletedUserProfile from "./CompletedUserProfile";
+import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+import { checkOTP, completeProfile, getOTP } from "@/services/authService";
+import { useRouter } from "next/navigation";
 
 const authenticationSteps = [
   { count: 1, label: "شماره موبایل", id: 1 },
@@ -17,19 +21,38 @@ const authenticationSteps = [
 const RESEND_TIME = 90;
 
 function Auth() {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [otp, setOpt] = useState("");
   const [avatar, setAvatar] = useState("");
   const [time, setTime] = useState(RESEND_TIME);
   const [profileUser, setProfileUser] = useState({ name: "", email: "" });
-  const sendPhoneNumberHandler = async (e) => {
+  const [Ac, setAc] = useState("98");
+  const router=useRouter()
+  const {
+    data: otpResponse,
+    isPending,
+    mutateAsync: mutateGetOtp,
+  } = useMutation({ mutationFn: getOTP });
+  const { isPending: isPendingCheckOtp, mutateAsync: mutateCheckingOtp } =
+    useMutation({ mutationFn: checkOTP });
+    const { isPending: isPendingSendProfile, mutateAsync: mutateSendProfile } =
+    useMutation({ mutationFn: completeProfile });
+
+  const handleSelectAc = (e) => {
+    setAc(e.target.value);
+  };
+  const sendPhoneNumberOrEmailHandler = async (e) => {
     e.preventDefault();
-    if (phoneNumber.length !== 11) {
-      return toast.error("لطفا شماره موبایل را درست وارد کنید");
+    if (email.length !== 0) {
+      return toast.error(
+        " ارسال کد با ایمیل در دست توسعه هست لطفا  ایمیل خود را پاک کنید"
+      );
     }
     try {
-      const data = await mutateGetOtp({ phoneNumber });
+      const value = Ac + phoneNumber;
+      const data = await mutateGetOtp({ phoneNumber: value });
       toast.success(data.message);
       setStep(2);
       setTime(RESEND_TIME);
@@ -38,16 +61,15 @@ function Auth() {
       toast.error(error?.response?.data?.message);
     }
   };
-  const phoneNumberHandler = (e) => {
-    setPhoneNumber(e.target.value);
-  };
   const sendOtpHandler = async (e) => {
     e.preventDefault();
     if (otp.length !== 6) {
       return toast.error("لطفا کامل بنویسید");
     }
     try {
-      const data = await mutateCheckingOtp({ phoneNumber, otp });
+      const value = Ac + phoneNumber;
+      console.log(value);
+      const data = await mutateCheckingOtp({ phoneNumber: value, otp });
       toast.success(data.message);
       if (data.user.isActive) {
         router.push("/");
@@ -91,10 +113,13 @@ function Auth() {
         return (
           <SendOTPForm
             phoneNumber={phoneNumber}
-            onChange={phoneNumberHandler}
-            sendPhoneNumberHandler={sendPhoneNumberHandler}
-            isPending={""}
-            isPendingCheckOtp={""}
+            email={email}
+            Ac={Ac}
+            setPhoneNumber={setPhoneNumber}
+            setEmail={setEmail}
+            handleSelectAc={handleSelectAc}
+            sendPhoneNumberOrEmailHandler={sendPhoneNumberOrEmailHandler}
+            isPending={isPending}
           />
         );
       case 2:
@@ -105,22 +130,23 @@ function Auth() {
             setStep={setStep}
             time={time}
             sendOtpHandler={sendOtpHandler}
-            isPendingCheckOtp={""}
-            otpResponse={""}
-            onResendOtp={sendPhoneNumberHandler}
+            isPending={isPending}
+            isPendingCheckOtp={isPendingCheckOtp}
+            otpResponse={otpResponse}
+            onResendOtp={sendPhoneNumberOrEmailHandler}
           />
         );
-        case 3:
-          return (
-            <CompletedUserProfile
-              avatar={avatar}
-              setAvatar={setAvatar}
-              profileUser={profileUser}
-              profileUserHandler={profileUserHandler}
-              senProfileHandler={senProfileHandler}
-              isPendingSendProfile={""}
-            />
-          );
+      case 3:
+        return (
+          <CompletedUserProfile
+            avatar={avatar}
+            setAvatar={setAvatar}
+            profileUser={profileUser}
+            profileUserHandler={profileUserHandler}
+            senProfileHandler={senProfileHandler}
+            isPendingSendProfile={isPendingSendProfile}
+          />
+        );
 
       default:
         return null;
@@ -158,7 +184,7 @@ function Auth() {
       <div className="flex flex-col items-center gap-y-6 w-full ">
         <div className="w-full relative flex items-center justify-center">
           <p className=" text-default-600  font-extrabold text-[1.25rem]">
-           {step===3?"تکمیل اطلاعات در سایت":" ورود یا ثبت نام در سایت"}
+            {step === 3 ? "تکمیل اطلاعات در سایت" : " ورود یا ثبت نام در سایت"}
           </p>
           <div className="w-full flex justify-between absolute right-3 ">
             {step === 2 && (
