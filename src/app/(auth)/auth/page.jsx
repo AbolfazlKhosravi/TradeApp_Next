@@ -21,7 +21,7 @@ const authenticationSteps = [
 const RESEND_TIME = 90;
 
 function Auth() {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [otp, setOpt] = useState("");

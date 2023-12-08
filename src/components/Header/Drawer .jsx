@@ -63,7 +63,7 @@ function Drawer({ setIsShowDrawer, isShowDrawer, user }) {
               <Close width={25} height={25} />
             </button>
           </div>
-          <Meno />
+          <Meno user={user} />
         </div>
         {!user && (
           <Link href="/auth" className="w-full  px-7  mt-7">

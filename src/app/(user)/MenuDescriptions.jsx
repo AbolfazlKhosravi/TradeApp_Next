@@ -5,7 +5,7 @@ import React from "react";
 
 function MenuDescriptions() {
   return (
-    <div className=" grid grid-cols-6  w-full px-5 gap-5 mt-4 ">
+    <div className=" grid grid-cols-6  w-full px-5 gap-5 lg:gap-16 mt-4 ">
       {ListDescriptions.map((item) => {
         return (
           <Link key={item.id} href={item.href} className="col-span-2 sm:col-span-1 rounded-2xl overflow-hidden">

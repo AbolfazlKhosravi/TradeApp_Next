@@ -28,7 +28,7 @@ function CompletedUserProfile({
         <div className="md:order-last relative flex justify-center items-center bg-default-100 dark:bgColor  p-3 md:p-4  rounded-3xl  w-full  ">
           {avatar && (
             <label
-              className="z-50 absolute bottom-[.6rem] translate-x-8 p-1 border cursor-pointer border-primary-700 rounded-2xl flex whitespace-nowrap items-center justify-center text-primary-500"
+              className="z-50 absolute translate-y-6  translate-x-8 p-1 border cursor-pointer border-primary-700 rounded-2xl flex whitespace-nowrap items-center justify-center text-primary-500"
               htmlFor="avatar"
             >
               <Camera width={25} height={25} />
