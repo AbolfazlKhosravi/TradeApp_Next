@@ -126,7 +126,7 @@ export default function Market() {
                 </p>
                 <p
                   dir="ltr"
-                  className="font-normal text-[.88rem] text-default-500"
+                  className="font-normal text-[.88rem] text-default-400"
                 >
                   {item.name}
                 </p>
